@@ -1,30 +1,22 @@
-# This is the based configuration required by CircleCI to run a build.
-#
-# The CKEditor 5 repository uses the dynamic configuration to generate
-# tasks for executing tests and checking the code coverage.
-#
-# This configuration aims to prepare a complete design and continue checking
-# the repository in a new workflow.
-#
-# To modify commands to execute on CI, review the following files:
-# - scripts/ci/generate-circleci-configuration.js - the script that creates the `config-tests.yml` file used on the new workflow.
-# - .circleci/template.yml - the template filled with data to execute.
-#
-# Useful resources:
-# - https://circleci.com/docs/using-dynamic-configuration/
 version: 2.1
 
-setup: true
-
-parameters:
-  isNightly:
-    type: boolean
-    default: false
-
-orbs:
-  continuation: circleci/continuation@0.1.2
-
 commands:
+  prepare_environment_command:
+    description: "Prepare environment (RAM, browsers, hosts, etc.)"
+    steps:
+      # CircleCI does not use the latest Chrome. Hence, we must install it manually.
+      - run:
+          name: Install the latest Chrome
+          command: yarn ckeditor5-dev-ci-install-latest-chrome
+
+  bootstrap_repository_command:
+    description: "Bootstrap the repository"
+    steps:
+      - install_ssh_keys_command
+      - run:
+          name: Install dependencies
+          command: yarn install
+
   install_ssh_keys_command:
     description: "Install SSH keys"
     steps:
@@ -33,26 +25,21 @@ commands:
             - "2a:97:94:d9:ae:a0:8d:bd:c2:2a:2d:cf:8d:d1:94:bd"
 
 jobs:
-  generate_configuration:
+  main:
     machine: true
-    parameters:
-      isNightly:
-        type: boolean
     steps:
       - checkout
-      - install_ssh_keys_command
+      - bootstrap_repository_command
+      - prepare_environment_command
       - run:
-          name: Install dependencies
-          command: yarn install
+          name: Prepare DLL builds in CKEditor 5
+          command: yarn run dll:build
       - run:
-          name: Generate a new configuration to check all packages in the repository
-          command: node scripts/ci/generate-circleci-configuration.js
-      - continuation/continue:
-          configuration_path: .circleci/config-tests.yml
+          name: Verify CKEditor 5 manual tests
+          command: bash scripts/check-manual-tests.sh -r ckeditor5 -f ckeditor5
 
 workflows:
   version: 2
-  config:
+  main:
     jobs:
-      - generate_configuration:
-          isNightly: false
+      - main
