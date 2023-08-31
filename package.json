@@ -96,7 +96,7 @@
     "@ckeditor/ckeditor5-dev-transifex": "^38.0.0",
     "@ckeditor/ckeditor5-dev-translations": "^38.0.0",
     "@ckeditor/ckeditor5-dev-utils": "^38.0.0",
-    "@ckeditor/ckeditor5-dev-web-crawler": "^38.0.0",
+    "@ckeditor/ckeditor5-dev-web-crawler": "https://gitpkg.now.sh/ckeditor/ckeditor5-dev/packages/ckeditor5-dev-web-crawler?fix-crawler-failures-on-ci",
     "@ckeditor/ckeditor5-document-outline": "39.0.1",
     "@ckeditor/ckeditor5-export-pdf": "39.0.1",
     "@ckeditor/ckeditor5-export-word": "39.0.1",
