@@ -36,7 +36,7 @@ jobs:
           command: yarn run dll:build
       - run:
           name: Verify CKEditor 5 manual tests
-          command: bash scripts/check-manual-tests.sh -r ckeditor5 -f ckeditor5
+          command: bash scripts/check-manual-tests.sh -f engine/view/
 
 workflows:
   version: 2
