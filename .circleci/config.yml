@@ -48,7 +48,7 @@ jobs:
           command: yarn run dll:build
       - run:
           environment:
-            DBUS_SESSION_BUS_ADDRESS="autolaunch:"
+            DBUS_SESSION_BUS_ADDRESS: "autolaunch:"
           name: Verify CKEditor 5 manual tests
           command: bash scripts/check-manual-tests.sh -r ckeditor5 -f ckeditor5
 
