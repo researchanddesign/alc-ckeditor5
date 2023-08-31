@@ -19,7 +19,7 @@ commands:
             fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
       - run:
           name: Run dbus service
-          command: service dbus start
+          command: sudo service dbus start
 
   bootstrap_repository_command:
     description: "Bootstrap the repository"
@@ -47,6 +47,8 @@ jobs:
           name: Prepare DLL builds in CKEditor 5
           command: yarn run dll:build
       - run:
+          environment:
+            DBUS_SESSION_BUS_ADDRESS="autolaunch:"
           name: Verify CKEditor 5 manual tests
           command: bash scripts/check-manual-tests.sh -r ckeditor5 -f ckeditor5
 
