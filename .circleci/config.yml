@@ -49,6 +49,8 @@ jobs:
           name: Prepare DLL builds in CKEditor 5
           command: yarn run dll:build
       - run:
+          environment:
+            DEBUG: puppeteer:*
           name: Verify CKEditor 5 manual tests
           command: bash scripts/check-manual-tests.sh -f engine/view/
 
