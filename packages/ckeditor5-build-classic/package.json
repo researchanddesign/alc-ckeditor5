@@ -72,7 +72,7 @@
     "directory": "packages/ckeditor5-build-classic"
   },
   "scripts": {
-    "build": "webpack --mode development",
+    "build": "webpack --mode production",
     "postbuild": "tsc -p ./tsconfig.types.json"
   }
 }

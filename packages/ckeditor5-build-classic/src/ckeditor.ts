@@ -21,7 +21,7 @@ import { Heading } from '@ckeditor/ckeditor5-heading';
 import { Image, ImageCaption, ImageResize, ImageStyle, ImageToolbar, ImageUpload, PictureEditing } from '@ckeditor/ckeditor5-image';
 import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { Link, LinkImage } from '@ckeditor/ckeditor5-link';
-import { List } from '@ckeditor/ckeditor5-list';
+import { List, DocumentListProperties } from '@ckeditor/ckeditor5-list';
 import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
@@ -57,7 +57,7 @@ class ClassicEditor extends ClassicEditorBase {
 		IndentBlock,
 		Link,
 		LinkImage,
-		List,
+		DocumentListProperties,
 		MediaEmbed,
 		Paragraph,
 		PasteFromOffice,
@@ -164,7 +164,7 @@ class BalloonEditor extends BalloonEditorBase {
 		IndentBlock,
 		Link,
 		LinkImage,
-		List,
+		DocumentListProperties,
 		MediaEmbed,
 		Paragraph,
 		PasteFromOffice,
