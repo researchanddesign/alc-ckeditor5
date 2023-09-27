@@ -21,11 +21,11 @@ import { Heading } from '@ckeditor/ckeditor5-heading';
 import { Image, ImageCaption, ImageResize, ImageStyle, ImageToolbar, ImageUpload, PictureEditing } from '@ckeditor/ckeditor5-image';
 import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { Link, LinkImage } from '@ckeditor/ckeditor5-link';
-import { List, DocumentListProperties } from '@ckeditor/ckeditor5-list';
+import { DocumentListProperties } from '@ckeditor/ckeditor5-list';
 import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
-import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
+import { Table, TableToolbar, TableProperties, TableCellProperties, TableColumnResize } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
 
@@ -65,6 +65,9 @@ class ClassicEditor extends ClassicEditorBase {
 		Strikethrough,
 		Table,
 		TableToolbar,
+		TableProperties,
+		TableCellProperties,
+		// TableColumnResize,
 		TextTransformation,
 		Underline
 	];
@@ -128,7 +131,9 @@ class ClassicEditor extends ClassicEditorBase {
 			contentToolbar: [
 				'tableColumn',
 				'tableRow',
-				'mergeTableCells'
+				'mergeTableCells',
+				'tableProperties',
+				'tableCellProperties'
 			]
 		},
 		// This value must be kept in sync with the language defined in webpack.config.js.
@@ -172,6 +177,9 @@ class BalloonEditor extends BalloonEditorBase {
 		Strikethrough,
 		Table,
 		TableToolbar,
+		TableProperties,
+		TableCellProperties,
+		// TableColumnResize,
 		TextTransformation,
 		Underline
 	];
@@ -234,7 +242,9 @@ class BalloonEditor extends BalloonEditorBase {
 			contentToolbar: [
 				'tableColumn',
 				'tableRow',
-				'mergeTableCells'
+				'mergeTableCells',
+				'tableProperties',
+				'tableCellProperties'
 			]
 		},
 		// This value must be kept in sync with the language defined in webpack.config.js.
