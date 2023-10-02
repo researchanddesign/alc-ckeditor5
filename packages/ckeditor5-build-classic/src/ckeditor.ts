@@ -12,7 +12,7 @@ import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { FontSize, FontFamily, FontColor, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
 import { UploadAdapter } from '@ckeditor/ckeditor5-adapter-ckfinder';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Italic, Strikethrough, Underline } from '@ckeditor/ckeditor5-basic-styles';
+import { Bold, Italic, Strikethrough, Subscript, Superscript, Underline } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
 import { CKBox } from '@ckeditor/ckeditor5-ckbox';
 import { CKFinder } from '@ckeditor/ckeditor5-ckfinder';
@@ -27,6 +27,12 @@ import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
 import { Table, TableToolbar, TableProperties, TableCellProperties, TableColumnResize } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
+import { ShowBlocks } from '@ckeditor/ckeditor5-show-blocks';
+import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
+import { SpecialCharacters, SpecialCharactersEssentials } from '@ckeditor/ckeditor5-special-characters';
+import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
+import { Style } from '@ckeditor/ckeditor5-style';
+import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
 
 class ClassicEditor extends ClassicEditorBase {
@@ -41,6 +47,8 @@ class ClassicEditor extends ClassicEditorBase {
 		Autoformat,
 		Bold,
 		Italic,
+		Subscript,
+		Superscript,
 		BlockQuote,
 		CKBox,
 		CKFinder,
@@ -69,6 +77,13 @@ class ClassicEditor extends ClassicEditorBase {
 		TableCellProperties,
 		// TableColumnResize,
 		TextTransformation,
+		ShowBlocks,
+		SourceEditing,
+		SpecialCharacters,
+		SpecialCharactersEssentials,
+		HorizontalLine,
+		GeneralHtmlSupport,
+		Style,
 		Underline
 	];
 
@@ -76,10 +91,11 @@ class ClassicEditor extends ClassicEditorBase {
 		toolbar: {
 			items: [
 				'undo', 'redo',
-				'|', 'heading',
+				'|', 'showBlocks', 'sourceEditing',
+				'|', 'style', 'heading',
 				'|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
-				'|', 'bold', 'italic', 'strikethrough', 'underline',
-				'|', 'link', 'uploadImage', 'insertTable', 'blockQuote', 'mediaEmbed',
+				'|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'underline',
+				'|', 'link', 'uploadImage', 'insertTable', 'blockQuote', 'mediaEmbed', 'horizontalLine', 'specialCharacters',
 				'|', 'alignment',
 				'|', 'bulletedList', 'numberedList', 'outdent', 'indent'
 			]
@@ -127,6 +143,20 @@ class ClassicEditor extends ClassicEditorBase {
 				'imageTextAlternative'
 			]
 		},
+		style: {
+			definitions: [
+				{
+					name: 'Kicker',
+					element: 'p',
+					classes: [ 'kicker' ]
+				},
+				{
+					name: 'Orange HR',
+					element: 'hr',
+					classes: [ 'orange' ]
+				}
+			]
+		},
 		table: {
 			contentToolbar: [
 				'tableColumn',
@@ -153,6 +183,8 @@ class BalloonEditor extends BalloonEditorBase {
 		Autoformat,
 		Bold,
 		Italic,
+		Subscript,
+		Superscript,
 		BlockQuote,
 		CKBox,
 		CKFinder,
@@ -181,6 +213,13 @@ class BalloonEditor extends BalloonEditorBase {
 		TableCellProperties,
 		// TableColumnResize,
 		TextTransformation,
+		ShowBlocks,
+		SourceEditing,
+		SpecialCharacters,
+		SpecialCharactersEssentials,
+		HorizontalLine,
+		Style,
+		GeneralHtmlSupport,
 		Underline
 	];
 
@@ -188,10 +227,11 @@ class BalloonEditor extends BalloonEditorBase {
 		toolbar: {
 			items: [
 				'undo', 'redo',
-				'|', 'heading',
+				'|', 'showBlocks', 'sourceEditing',
+				'|', 'style', 'heading',
 				'|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
-				'|', 'bold', 'italic', 'strikethrough', 'underline',
-				'|', 'link', 'uploadImage', 'insertTable', 'blockQuote', 'mediaEmbed',
+				'|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'underline',
+				'|', 'link', 'uploadImage', 'insertTable', 'blockQuote', 'mediaEmbed', 'horizontalLine', 'specialCharacters',
 				'|', 'bulletedList', 'numberedList', 'outdent', 'indent'
 			]
 		},
@@ -236,6 +276,20 @@ class BalloonEditor extends BalloonEditorBase {
 				'|',
 				'toggleImageCaption',
 				'imageTextAlternative'
+			]
+		},
+		style: {
+			definitions: [
+				{
+					name: 'Kicker',
+					element: 'p',
+					classes: [ 'kicker' ]
+				},
+				{
+					name: 'Orange HR',
+					element: 'hr',
+					classes: [ 'orange' ]
+				}
 			]
 		},
 		table: {

@@ -9,7 +9,7 @@ import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { FontSize, FontFamily, FontColor, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
 import { UploadAdapter } from '@ckeditor/ckeditor5-adapter-ckfinder';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Italic, Strikethrough, Underline } from '@ckeditor/ckeditor5-basic-styles';
+import { Bold, Italic, Strikethrough, Subscript, Superscript, Underline } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
 import { CKBox } from '@ckeditor/ckeditor5-ckbox';
 import { CKFinder } from '@ckeditor/ckeditor5-ckfinder';
@@ -24,9 +24,15 @@ import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
 import { Table, TableToolbar, TableProperties, TableCellProperties } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
+import { ShowBlocks } from '@ckeditor/ckeditor5-show-blocks';
+import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
+import { SpecialCharacters, SpecialCharactersEssentials } from '@ckeditor/ckeditor5-special-characters';
+import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
+import { Style } from '@ckeditor/ckeditor5-style';
+import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
 declare class ClassicEditor extends ClassicEditorBase {
-    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof FontFamily | typeof FontSize | typeof UploadAdapter | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof Strikethrough | typeof Underline | typeof BlockQuote | typeof CloudServices | typeof Image | typeof ImageCaption | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof CKBox | typeof CKFinder | typeof EasyImage | typeof DocumentListProperties | typeof Indent | typeof IndentBlock | typeof Link | typeof LinkImage | typeof MediaEmbed | typeof PasteFromOffice | typeof Table | typeof TableCellProperties | typeof TableProperties | typeof TableToolbar | typeof PictureEditing)[];
+    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof FontFamily | typeof FontSize | typeof UploadAdapter | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Superscript | typeof Subscript | typeof Bold | typeof Italic | typeof Strikethrough | typeof Underline | typeof BlockQuote | typeof CloudServices | typeof Image | typeof ImageCaption | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof CKBox | typeof CKFinder | typeof EasyImage | typeof DocumentListProperties | typeof Indent | typeof IndentBlock | typeof Link | typeof LinkImage | typeof MediaEmbed | typeof PasteFromOffice | typeof Table | typeof TableCellProperties | typeof TableProperties | typeof TableToolbar | typeof ShowBlocks | typeof SourceEditing | typeof SpecialCharacters | typeof SpecialCharactersEssentials | typeof HorizontalLine | typeof GeneralHtmlSupport | typeof Style | typeof PictureEditing)[];
     static defaultConfig: {
         toolbar: {
             items: string[];
@@ -48,6 +54,13 @@ declare class ClassicEditor extends ClassicEditorBase {
                 items: string[];
                 defaultItem: string;
             })[];
+        };
+        style: {
+            definitions: {
+                name: string;
+                element: string;
+                classes: string[];
+            }[];
         };
         table: {
             contentToolbar: string[];
@@ -56,7 +69,7 @@ declare class ClassicEditor extends ClassicEditorBase {
     };
 }
 declare class BalloonEditor extends BalloonEditorBase {
-    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof FontFamily | typeof FontSize | typeof UploadAdapter | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Bold | typeof Italic | typeof Strikethrough | typeof Underline | typeof BlockQuote | typeof CloudServices | typeof Image | typeof ImageCaption | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof CKBox | typeof CKFinder | typeof EasyImage | typeof DocumentListProperties | typeof Indent | typeof IndentBlock | typeof Link | typeof LinkImage | typeof MediaEmbed | typeof PasteFromOffice | typeof Table | typeof TableCellProperties | typeof TableProperties | typeof TableToolbar | typeof PictureEditing)[];
+    static builtinPlugins: (typeof TextTransformation | typeof Essentials | typeof Alignment | typeof FontBackgroundColor | typeof FontColor | typeof FontFamily | typeof FontSize | typeof UploadAdapter | typeof Paragraph | typeof Heading | typeof Autoformat | typeof Superscript | typeof Subscript | typeof Bold | typeof Italic | typeof Strikethrough | typeof Underline | typeof BlockQuote | typeof CloudServices | typeof Image | typeof ImageCaption | typeof ImageResize | typeof ImageStyle | typeof ImageToolbar | typeof ImageUpload | typeof CKBox | typeof CKFinder | typeof EasyImage | typeof DocumentListProperties | typeof Indent | typeof IndentBlock | typeof Link | typeof LinkImage | typeof MediaEmbed | typeof PasteFromOffice | typeof Table | typeof TableCellProperties | typeof TableProperties | typeof TableToolbar | typeof ShowBlocks | typeof SourceEditing | typeof SpecialCharacters | typeof SpecialCharactersEssentials | typeof HorizontalLine | typeof GeneralHtmlSupport | typeof Style | typeof PictureEditing)[];
     static defaultConfig: {
         toolbar: {
             items: string[];
@@ -78,6 +91,13 @@ declare class BalloonEditor extends BalloonEditorBase {
                 items: string[];
                 defaultItem: string;
             })[];
+        };
+        style: {
+            definitions: {
+                name: string;
+                element: string;
+                classes: string[];
+            }[];
         };
         table: {
             contentToolbar: string[];
